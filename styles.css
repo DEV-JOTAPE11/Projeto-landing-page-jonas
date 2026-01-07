@@ -46,6 +46,8 @@ a {
 
   /* --- Bordas e Detalhes --- */
   --border-color: #29292e; /* Cinza escuro para bordas sutis */
+
+  --font-txt: "Poppins", sans-serif;
 }
 
 /* Definições globais */
@@ -133,6 +135,39 @@ header {
         height: 40px;
         background-color: #323238;
         opacity: 0.5;
+      }
+
+      ul {
+        color: white;
+
+        & a {
+          position: relative; /* Importante: torna o link a referência para a linha */
+          font-family: var(--font-txt);
+          font-weight: 300;
+          transition: color 0.3s ease-in-out;
+          
+          /* CRIAÇÃO DA LINHA (::after) */
+          &::after {
+            content: "";
+            position: absolute;
+            width: 0%;      /* Começa invisível (largura 0) */
+            height: 2px;    /* Espessura da linha */
+            background-color: #8257e5; /* Roxo da marca */
+            bottom: -4px;   /* Distância do texto (ajuste se quiser mais longe) */
+            left: 0;
+            transition: width 0.3s ease-in-out; /* A mágica da animação */
+          }
+
+          /* COMPORTAMENTO NO HOVER */
+          &:hover {
+            color: #8257e5; /* Muda a cor do texto */
+            
+            /* Faz a linha crescer para 100% da largura */
+            &::after {
+              width: 100%; 
+            }
+          }
+        }
       }
     }
 
