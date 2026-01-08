@@ -52,9 +52,12 @@ a {
 
 /* Definições globais */
 body {
-  background-color: var(--bg-body);
   color: var(--text-body);
   font-family: "Inter", sans-serif;
+  background-color: #000000; 
+  background-image: radial-gradient(circle at 50% 0%, #1e1638 0%, #000000 70%);
+  background-attachment: fixed;  
+  min-height: 100vh; 
 }
 
 h1,
@@ -114,8 +117,8 @@ header {
 
     .logo {
       display: block;
-      height: 100px; /* Reduzi de 200px para 40px (tamanho padrão de header) */
-      width: auto; /* A largura se ajusta sozinha */
+      height: 100px; 
+      width: auto; 
       object-fit: contain;
     }
 
@@ -150,19 +153,17 @@ header {
           &::after {
             content: "";
             position: absolute;
-            width: 0%; /* Começa invisível (largura 0) */
-            height: 2px; /* Espessura da linha */
-            background-color: #8257e5; /* Roxo da marca */
-            bottom: -4px; /* Distância do texto (ajuste se quiser mais longe) */
+            width: 0%; 
+            height: 2px; 
+            background-color: #8257e5; 
+            bottom: -4px; 
             left: 0;
-            transition: width 0.3s ease-in-out; /* A mágica da animação */
+            transition: width 0.3s ease-in-out; 
           }
 
           /* COMPORTAMENTO NO HOVER */
           &:hover {
-            color: #8257e5; /* Muda a cor do texto */
-
-            /* Faz a linha crescer para 100% da largura */
+            color: #8257e5; 
             &::after {
               width: 100%;
             }
@@ -291,6 +292,391 @@ header {
   }
 }
 
+/* =========================================
+   ESTILOS DA SEÇÃO HERO (MAIN)
+   ========================================= */
+
+/* Ajuste geral do Main para não ficar colado no header fixo */
+main {
+  margin-top: 4rem; 
+  padding-bottom: 80px; 
+}
+
+/* Layout Flex para colocar Info e Vídeo lado a lado */
+.hero-section {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 4rem; 
+}
+
+/* --- Coluna da Esquerda: Informações --- */
+.information {
+  flex: 1; 
+  max-width: 600px; 
+}
+
+.information h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  /* Efeito de gradiente no texto do título (opcional, baseado na referência) */
+  background: linear-gradient(90deg, #ffffff, #a8a8b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.information p {
+  font-size: 1.125rem;
+  color: var(--text-body);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* Wrapper para os botões ficarem lado a lado ou empilhados */
+.buttons-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* --- Estilização Geral dos Botões do Hero --- */
+.buttons-wrapper {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.buttons-wrapper button {
+  padding: 12px 32px; /* Botões mais largos */
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500; 
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  transition: all 0.3s ease; 
+}
+
+
+.buttons-wrapper button img {
+  width: 12px;  
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease; 
+  filter: brightness(0) invert(1);
+}
+
+
+.btn-primary {
+  background-color: #4b3cff;
+  color: white;
+  box-shadow: 0 4px 10px rgba(130, 87, 229, 0.3);
+}
+
+/* Hover do Primário */
+.btn-primary:hover {
+  filter: brightness(1.1); 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(130, 87, 229, 0.5);
+}
+
+/* --- 3. Botão Secundário (Transparente) --- */
+.btn-secondary {
+  background: transparent;
+  color: white; 
+  border: 1px solid transparent; 
+}
+
+/* Hover do Secundário */
+.btn-secondary:hover {
+  color: #8257E5;
+  box-shadow: 0 8px 20px rgba(130, 87, 229, 0.5); 
+}
+
+/* Truque para pintar a imagem PNG/SVG de roxo usando CSS Filter */
+/* Isso transforma a cor branca/preta da imagem na cor #8257E5 */
+.btn-secondary:hover img {
+  filter: invert(36%) sepia(93%) saturate(1352%) hue-rotate(236deg) brightness(87%) contrast(89%);
+}
+
+/* --- 4. Animação da Seta (Para ambos os botões) --- */
+.buttons-wrapper button:hover img {
+  transform: translateX(5px); 
+}
+
+/* =========================================
+   ESTILOS DA ÁREA DO VÍDEO E BADGE
+   ========================================= */
+
+/* --- Coluna da Direita --- */
+.video {
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+}
+
+/* O Wrapper é o segredo do posicionamento */
+.video-wrapper {
+  position: relative; 
+  width: 100%;
+  max-width: 560px; 
+  aspect-ratio: 16 / 9; 
+  
+  border-radius: .5rem; 
+  /* Sombra roxa brilhante estilo "neon" */
+  box-shadow: 0px 20px 40px -10px rgba(130, 87, 229, 0.3); 
+  background-color: var(--bg-card); 
+  
+  /* IMPORTANTE: Se usarmos overflow:hidden para arredondar o vídeo, 
+     o badge será cortado. Então, não usamos overflow aqui, mas sim no iframe. */
+}
+
+/* O Player de Vídeo (Iframe) */
+.video-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem; 
+  display: block;
+}
+
+/* =========================================
+   ESTILOS DO PLAYER DE VÍDEO (CORRIGIDO)
+   ========================================= */
+
+/* --- Container Principal --- */
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  position: relative; /* Necessário para o badge se posicionar em relação a ele se mudar o HTML */
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Wrapper (A caixa que segura tudo) --- */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px; 
+  /* REMOVIDO: overflow: hidden; -> Isso cortava o badge */
+  box-shadow: 0 20px 40px -10px rgba(130, 87, 229, 0.3);
+  background-color: #000;
+}
+
+/* --- O Vídeo em si --- */
+.video-frame {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Adicionamos o arredondamento aqui para não precisar de overflow: hidden no pai */
+  border-radius: 12px; 
+}
+
+/* --- O Badge Giratório --- */
+.spinning-badge {
+  position: absolute;
+  top: -35px;   
+  right: -35px; 
+  width: 90px;
+  height: 90px;
+  z-index: 30; /* Aumentei o Z-Index para garantir que fique acima de tudo */
+  animation: spinAnimation 10s linear infinite; 
+  pointer-events: none; /* Garante que o badge não atrapalhe cliques no vídeo */
+}
+
+/* Animação de Rotação */
+@keyframes spinAnimation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Overlay Roxo (Tela de Pause) --- */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  /* Arredondamento igual ao do vídeo */
+  border-radius: 12px; 
+  
+  background: linear-gradient(135deg, rgba(98, 0, 234, 0.9), rgba(124, 77, 255, 0.9));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.video-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.overlay-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.overlay-btn svg { width: 18px; height: 18px; }
+
+.overlay-btn:hover {
+  background: white;
+  color: #6200ea;
+  transform: scale(1.05);
+}
+
+/* --- Barra de Controles Personalizada --- */
+.custom-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* Arredondamento apenas nos cantos inferiores */
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  padding: 20px 20px 15px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.video-wrapper:hover .custom-controls {
+  opacity: 1;
+}
+
+/* --- Estilo da Barra de Progresso --- */
+.progress-area {
+  width: 100%;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #8257e5;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 2px solid white;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* --- Botões da Barra --- */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.controls-left, .controls-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  color: #e1e1e6;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.control-btn:hover {
+  color: #8257e5;
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.time-display {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #ccc;
+  min-width: 90px;
+}
+
+
+
+/* --- A Imagem Giratória (Badge) --- */
+.spinning-badge {
+  position: absolute; /* Sai do fluxo normal */
+  top: -35px;   /* Sobe 35px além do topo do vídeo */
+  right: -35px; /* Vai 35px para a direita além do vídeo */
+  width: 90px;  /* Tamanho do badge */
+  height: 90px;
+  z-index: 10;  /* Garante que fique por cima do vídeo */
+  animation: spinAnimation 10s linear infinite; 
+}
+
+/* Definição da Animação de Rotação */
+@keyframes spinAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+
 @media (width >= 1024px) {
   #display-desktop {
     display: block;
@@ -345,6 +731,34 @@ header {
         font-weight: 700;
       }
     }
+  }
+
+   .hero-section {
+    flex-direction: column-reverse; /* No celular, o vídeo fica em cima, texto embaixo */
+    gap: 3rem;
+    text-align: center; /* Centraliza o texto no mobile */
+  }
+
+  .information h1 {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .information p {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .buttons-wrapper {
+    justify-content: center; /* Centraliza botões */
+  }
+  
+  /* Ajuste do badge no mobile para não sair da tela */
+  .spinning-badge {
+      width: 70px;
+      height: 70px;
+      top: -25px;
+      right: -15px;
   }
 }
    

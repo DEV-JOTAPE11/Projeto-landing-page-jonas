@@ -5,8 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -64,12 +63,163 @@
 
     <section class="banner">
       <div class="banner-container container">
-        <span>DESCONTO BARBER-START •
-         DE: <del>R$ 497,00</del></span> <span> Por: <strong>R$ 189,90</strong> 
-        OU 12x de <strong>R$15,82</strong></span>
+        <span>DESCONTO BARBER-START • DE: <del>R$ 497,00</del></span>
+        <span>
+          Por: <strong>R$ 189,90</strong> OU 12x de
+          <strong>R$15,82</strong></span
+        >
         <button class="garanta-vaga"><span>Garanta sua vaga!</span></button>
       </div>
     </section>
+
+    <main>
+      <div class="container hero-section">
+        <div class="information">
+          <h1>
+            Pare de aprender cortes isolados. Aprenda os fundamentos reais para
+            dominar qualquer cabelo e qualquer corte.
+          </h1>
+          <p>
+            Por apenas R$ 189,90, aprenda passo a passo como cortar cabelo,
+            mesmo sem experiência prévia. Inscreva-se agora e conheça o método
+            Barber-Start!
+          </p>
+
+          <div class="buttons-wrapper">
+            <button class="btn-primary">
+              Quero aprender agora
+              <img src="assets/angle-right-solid-full.svg" alt="arrow" />
+            </button>
+            <button class="btn-secondary">
+              Veja o que você vai aprender
+              <img src="assets/angle-right-solid-full.svg" alt="arrow" />
+            </button>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <div class="video-wrapper" id="videoWrapper">
+            <video
+              id="mainVideo"
+              class="video-frame"
+              src="video/Jonas-video.mp4"
+              playsinline
+            ></video>
+
+            <div class="video-overlay" id="videoOverlay">
+              <div class="overlay-content">
+                <h3>Você já começou a assistir esse vídeo</h3>
+                <div class="overlay-buttons">
+                  <button id="btnResumeOverlay" class="overlay-btn">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M8 5v14l11-7z" />
+                    </svg>
+                    Continuar
+                  </button>
+                  <button id="btnRestartOverlay" class="overlay-btn">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74-2.74L3 12"
+                      />
+                    </svg>
+                    Do Início
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="custom-controls" id="customControls">
+            <div class="progress-area">
+              <input
+                type="range"
+                id="progressBar"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="Progresso do vídeo"
+              />
+            </div>
+
+            <div class="controls-row">
+              <div class="controls-left">
+                <button
+                  id="btnPlayPause"
+                  class="control-btn"
+                  title="Play/Pause"
+                >
+                  <svg class="icon-play" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M8 5v14l11-7z" />
+                  </svg>
+                  <svg
+                    class="icon-pause"
+                    viewBox="0 0 24 24"
+                    style="display: none"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  id="btnVolume"
+                  class="control-btn"
+                  title="Mutar/Desmutar"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+                    />
+                  </svg>
+                </button>
+
+                <span class="time-display">
+                  <span id="currentTime">00:00</span> /
+                  <span id="duration">00:00</span>
+                </span>
+              </div>
+
+              <div class="controls-right">
+                <button id="btnRewind" class="control-btn" title="Voltar 10s">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+                    />
+                  </svg>
+                </button>
+                <button id="btnForward" class="control-btn" title="Avançar 10s">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  id="btnFullscreen"
+                  class="control-btn"
+                  title="Tela Cheia"
+                >
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      fill="currentColor"
+                      d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <script src="script.js"></script>
   </body>
