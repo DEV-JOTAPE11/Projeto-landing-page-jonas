@@ -968,6 +968,92 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 
 
+/* ==========================================================================
+   SEÇÃO BÔNUS EXCLUSIVOS
+========================================================================== */
+
+.bonus-section {
+  padding: 80px 0;
+  background-color: var(--bg-body);
+}
+
+/* Grid de 3 colunas para os bônus */
+.bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.bonus-card {
+  /* O GRADIENTE: Começa escuro (#121214) e clareia levemente (#1c1c21) para baixo */
+  background: linear-gradient(180deg, #121214 0%, #1a1a20 100%);
+  
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito Hover: Borda roxa e sobe um pouco */
+.bonus-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px -10px rgba(130, 87, 229, 0.15);
+}
+
+/* Cabeçalho do Card (Ícone + Título) */
+.bonus-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bonus-card .icon-box {
+  width: 48px;
+  height: 48px;
+  background: rgba(130, 87, 229, 0.1); /* Fundo roxo transparente */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.bonus-card h3 {
+  font-size: 1.125rem;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.bonus-card p {
+  color: var(--text-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Frase de Destaque Final */
+.bonus-quote-box {
+  margin-top: 60px;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  background: linear-gradient(90deg, transparent, rgba(130, 87, 229, 0.05), transparent);
+}
+
+.bonus-quote-box p {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white; /* Verde ou Branco, para destacar */
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+}
 
 /* ==========================================================================
    RESPONSIVIDADE (MEDIA QUERIES)
@@ -977,6 +1063,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 @media (width >= 1024px) {
   #display-desktop {
     display: block;
+  }
+
+  .bonus-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1158,6 +1248,33 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .testimonial-card {
     width: 280px;
     padding: 20px;
+  }
+
+  .bonus-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .bonus-card {
+    padding: 24px;
+  }
+
+  .bonus-header {
+    flex-direction: row; /* Ícone ao lado do título no mobile economiza altura */
+    align-items: center;
+  }
+
+  .bonus-card .icon-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bonus-card h3 {
+    font-size: 1rem;
+  }
+  
+  .bonus-quote-box p {
+      font-size: 1.1rem;
   }
 }
 
