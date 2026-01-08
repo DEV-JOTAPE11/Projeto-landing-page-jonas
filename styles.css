@@ -692,6 +692,147 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transition: ease-in-out 0.3s;
 }
 
+
+/* ==========================================================================
+   SEÇÃO MÓDULOS (BENTO GRID)
+========================================================================== */
+
+.modules-section {
+  padding: 100px 0;
+  background-color: var(--bg-body);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.section-subtitle {
+  display: block;
+  color: var(--primary-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #fff, #a8a8b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+  color: var(--text-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- GRID PRINCIPAL --- */
+.modules-grid {
+  display: grid;
+  /* DESKTOP: 3 colunas iguais */
+  grid-template-columns: repeat(3, 1fr); 
+  /* Espaçamento entre os cards */
+  gap: 24px; 
+  /* Garante que as linhas tenham altura igual */
+  grid-auto-rows: 1fr; 
+}
+
+/* Estilo Básico do Card */
+.module-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- CLASSE PARA CARD GRANDE (WIDE) --- */
+/* Isso faz o card ocupar 2 colunas */
+.card-wide {
+  grid-column: span 2; 
+  /* Opcional: Fundo levemente diferente ou gradiente para destacar */
+  background: linear-gradient(145deg, var(--bg-card) 0%, rgba(130, 87, 229, 0.05) 100%);
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px -10px rgba(130, 87, 229, 0.2);
+}
+
+.module-card .icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(130, 87, 229, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--primary-color);
+}
+
+.module-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: white;
+}
+
+/* Descrição extra apenas para cards grandes (opcional) */
+.card-desc {
+  color: var(--text-body);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.module-card ul {
+  padding-left: 0;
+  margin-top: auto; /* Empurra a lista para o final se sobrar espaço */
+}
+
+.module-card ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--text-body);
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+.module-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.button-module {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+
+
 /* ==========================================================================
    RESPONSIVIDADE (MEDIA QUERIES)
    ========================================================================== */
@@ -845,6 +986,55 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .btn-about {
     width: 100%;
     justify-content: center;
+    padding-inline: 3px;
+  }
+
+  .modules-grid {
+   
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  
+  .module-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    
+    grid-column: auto !important;
+  }
+
+  
+  .card-wide {
+    grid-column: auto !important;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .button-module {
+    max-width: 310px;
+    margin-inline: auto;
   }
 }
+
+/* ==========================================================================
+   RESPONSIVIDADE (TABLET)
+========================================================================== */
+
+/* Tablet (Menor que 1024px) */
+@media (max-width: 1024px) {
+  .modules-grid {
+    /* Muda para 2 colunas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* No Tablet, o card wide ocupa a linha inteira (2 colunas) */
+  .card-wide {
+    grid-column: span 2;
+  }
+}
+
 
