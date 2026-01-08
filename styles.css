@@ -692,7 +692,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transition: ease-in-out 0.3s;
 }
 
-
 /* ==========================================================================
    SEÇÃO MÓDULOS (BENTO GRID)
 ========================================================================== */
@@ -738,11 +737,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .modules-grid {
   display: grid;
   /* DESKTOP: 3 colunas iguais */
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   /* Espaçamento entre os cards */
-  gap: 24px; 
+  gap: 24px;
   /* Garante que as linhas tenham altura igual */
-  grid-auto-rows: 1fr; 
+  grid-auto-rows: 1fr;
 }
 
 /* Estilo Básico do Card */
@@ -761,9 +760,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* --- CLASSE PARA CARD GRANDE (WIDE) --- */
 /* Isso faz o card ocupar 2 colunas */
 .card-wide {
-  grid-column: span 2; 
+  grid-column: span 2;
   /* Opcional: Fundo levemente diferente ou gradiente para destacar */
-  background: linear-gradient(145deg, var(--bg-card) 0%, rgba(130, 87, 229, 0.05) 100%);
+  background: linear-gradient(
+    145deg,
+    var(--bg-card) 0%,
+    rgba(130, 87, 229, 0.05) 100%
+  );
 }
 
 .module-card:hover {
@@ -831,7 +834,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-top: 4rem;
 }
 
-
 /* ==========================================================================
    SEÇÃO DE DEPOIMENTOS (ESTILOS FINAIS)
 ========================================================================== */
@@ -839,7 +841,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .testimonials-section {
   padding: 80px 0;
   background-color: var(--bg-body);
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 /* Container principal das linhas */
@@ -892,14 +894,22 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Esquerda: Move de 0 a -50% */
 @keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } 
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Direita: Move de -50% a 0 */
 @keyframes scrollRight {
-  0% { transform: translateX(-50%); } 
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .left-direction .scroll-inner {
@@ -966,8 +976,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 0.8rem;
 }
 
-
-
 /* ==========================================================================
    SEÇÃO BÔNUS EXCLUSIVOS
 ========================================================================== */
@@ -988,7 +996,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .bonus-card {
   /* O GRADIENTE: Começa escuro (#121214) e clareia levemente (#1c1c21) para baixo */
   background: linear-gradient(180deg, #121214 0%, #1a1a20 100%);
-  
+
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 30px;
@@ -1044,7 +1052,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   text-align: center;
   padding: 20px;
   border-top: 1px solid var(--border-color);
-  background: linear-gradient(90deg, transparent, rgba(130, 87, 229, 0.05), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(130, 87, 229, 0.05),
+    transparent
+  );
 }
 
 .bonus-quote-box p {
@@ -1053,6 +1066,200 @@ input[type="range"]::-webkit-slider-thumb:hover {
   color: white; /* Verde ou Branco, para destacar */
   font-family: "Poppins", sans-serif;
   font-style: italic;
+}
+
+/* ==========================================================================
+   SEÇÃO DE OFERTA (CARD TRANSPARENTE & FUNDO ANIMADO)
+========================================================================== */
+
+.offer-section {
+  padding: 20px 0;
+  background-color: var(--bg-body);
+  position: relative;
+  overflow: hidden; /* Garante que a tesoura gigante não "vaze" do site */
+  min-height: 800px; /* Altura mínima para caber o efeito */
+}
+
+/* Necessário para o conteúdo ficar acima do efeito de fundo */
+.relative-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- O EFEITO DE FUNDO (TESOURA GIGANTE) --- */
+.offer-bg-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Centraliza o elemento */
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Não interfere no clique */
+  z-index: 1; /* Fica atrás do conteúdo */
+}
+
+/* O SVG da Tesoura */
+.giant-scissor {
+  /* Tamanho gigante (80% da largura da tela, mas com limite) */
+  width: 80vw;
+  max-width: 1200px;
+  height: auto;
+
+  /* Cor Roxa BEM transparente */
+  color: var(--primary-color);
+  opacity: 0.05; /* Ajuste a transparência aqui (0.05 é bem sutil) */
+
+  /* Animação de rotação lenta */
+  animation: spinSlow 60s linear infinite;
+}
+
+/* Animação de Rotação Lenta */
+@keyframes spinAnimation {
+  /* (Você já tem essa animação no seu CSS, reutilizei o nome dela) */
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Se não tiver a animation spinAnimation, use esta: */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- O CARD DE OFERTA TRANSPARENTE --- */
+.offer-card {
+  max-width: 450px;
+  margin: 40px auto 0 auto; /* Centraliza na tela */
+
+  /* Fundo Transparente Sutil */
+  background: rgba(255, 255, 255, 0.03);
+
+  /* Borda Roxa Fina */
+  border: 1px solid rgba(130, 87, 229, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0 0 30px 0; /* Padding apenas embaixo */
+  text-align: center;
+
+  /* O SEGTEO DA LEGIBILIDADE: Desfoca o que passa atrás do card */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Para Safari */
+
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagem do Topo do Card */
+.card-header-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Um leve brilho roxo na base da imagem para conectar com o card */
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Bloco de Preços */
+.pricing-block {
+  padding: 30px 20px 20px 20px;
+}
+
+.old-price {
+  display: block;
+  font-size: 1rem;
+  color: #d1d1d6;
+  text-decoration: line-through;
+  margin-bottom: 5px;
+}
+
+.current-price {
+  /* Usa a cor secundária (verde) para destacar o preço */
+  color: var(--secondary-color);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(4, 211, 97, 0.3); /* Brilho verde sutil */
+}
+
+.current-price .currency {
+  font-size: 1.5rem;
+}
+.current-price .value {
+  font-size: 4rem;
+  letter-spacing: -2px;
+}
+.current-price .cents {
+  font-size: 1.5rem;
+}
+
+.installments {
+  display: block;
+  color: var(--text-title);
+  font-size: 1.1rem;
+}
+
+/* Lista de Benefícios */
+.offer-benefits {
+  text-align: left;
+  display: inline-block; /* Para centralizar o bloco da lista */
+  margin: 20px auto 30px auto;
+  padding: 0 20px;
+}
+
+.offer-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: var(--text-body);
+}
+
+/* Reutilizando seu estilo de check-icon */
+.offer-benefits .check-icon {
+  color: var(--secondary-color); /* Verde */
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 5px rgba(4, 211, 97, 0.4));
+}
+
+/* Botão e Texto de Segurança */
+.btn-offer {
+  width: 90%;
+  padding: 18px;
+  font-size: 1.1rem;
+  margin: 0 auto; /* Centraliza o botão */
+  display: flex;
+  justify-content: center;
+}
+
+.secure-purchase {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+/* Adiciona um cadeadinho antes do texto de segurança */
+.secure-purchase::before {
+  content: "🔒";
+  font-size: 0.9rem;
+}
+
+#a-offer {
+  margin-inline: auto;
 }
 
 /* ==========================================================================
@@ -1190,10 +1397,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
     max-width: 100%;
     padding: 0 20px;
   }
-  
+
   .about-img-glow {
-      opacity: 0.1;
-      filter: blur(60px);
+    opacity: 0.1;
+    filter: blur(60px);
   }
 
   .about-content {
@@ -1204,7 +1411,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .about-content h2 {
     font-size: 2rem;
   }
-  
+
   .about-content p {
     font-size: 1rem;
   }
@@ -1216,22 +1423,19 @@ input[type="range"]::-webkit-slider-thumb:hover {
   }
 
   .modules-grid {
-   
     display: flex !important;
     flex-direction: column !important;
     gap: 20px;
     padding: 0 16px;
   }
 
-  
   .module-card {
     width: 100% !important;
     max-width: 100% !important;
-    
+
     grid-column: auto !important;
   }
 
-  
   .card-wide {
     grid-column: auto !important;
   }
@@ -1254,7 +1458,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: flex;
     flex-direction: column;
   }
-  
+
   .bonus-card {
     padding: 24px;
   }
@@ -1272,9 +1476,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .bonus-card h3 {
     font-size: 1rem;
   }
-  
+
   .bonus-quote-box p {
-      font-size: 1.1rem;
+    font-size: 1.1rem;
+  }
+
+  .current-price .value {
+    font-size: 3.5rem;
+  }
+  .offer-card {
+    width: 95%;
+  }
+
+  #a-offer {
+    margin-inline: auto;
+    width: 70%;
   }
 }
 
@@ -1294,5 +1510,3 @@ input[type="range"]::-webkit-slider-thumb:hover {
     grid-column: span 2;
   }
 }
-
-
