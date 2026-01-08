@@ -832,6 +832,142 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 
+/* ==========================================================================
+   SEÇÃO DE DEPOIMENTOS (ESTILOS FINAIS)
+========================================================================== */
+
+.testimonials-section {
+  padding: 80px 0;
+  background-color: var(--bg-body);
+  overflow: hidden; 
+}
+
+/* Container principal das linhas */
+.scroller-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* Fade Lateral (Sombra nas pontas para suavizar) */
+.scroller-container::before,
+.scroller-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px; /* Largura do fade */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroller-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-body), transparent);
+}
+
+.scroller-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-body), transparent);
+}
+
+/* Linha de Rolagem */
+.scroll-row {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Conteúdo Interno (O que se move) */
+.scroll-inner {
+  display: flex;
+  gap: 24px;
+  padding-right: 24px;
+  width: max-content; /* OBRIGATÓRIO: Permite largura infinita */
+}
+
+/* --- ANIMAÇÕES (O CORAÇÃO DO EFEITO) --- */
+
+/* Esquerda: Move de 0 a -50% */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+/* Direita: Move de -50% a 0 */
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); } 
+  100% { transform: translateX(0); }
+}
+
+.left-direction .scroll-inner {
+  animation: scrollLeft 60s linear infinite;
+}
+
+.right-direction .scroll-inner {
+  animation: scrollRight 60s linear infinite;
+}
+
+/* Pausa ao passar o mouse */
+.scroll-inner:hover {
+  animation-play-state: paused;
+}
+
+/* --- ESTILO DOS CARDS --- */
+.testimonial-card {
+  background-color: #020511;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  width: 350px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--primary-color);
+}
+
+.quote {
+  font-size: 0.95rem;
+  color: #d1d1d6;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
+}
+
+.user-info strong {
+  color: white;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.user-info span {
+  color: var(--text-body);
+  font-size: 0.8rem;
+}
+
+
+
 
 /* ==========================================================================
    RESPONSIVIDADE (MEDIA QUERIES)
@@ -1017,6 +1153,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .button-module {
     max-width: 310px;
     margin-inline: auto;
+  }
+
+  .testimonial-card {
+    width: 280px;
+    padding: 20px;
   }
 }
 

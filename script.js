@@ -117,3 +117,24 @@ document.addEventListener('DOMContentLoaded', function() {
         video.play();
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollers = document.querySelectorAll(".scroll-inner");
+
+  scrollers.forEach((scroller) => {
+    // 1. Pega os itens originais do HTML
+    const originalContent = Array.from(scroller.children);
+    
+    // 2. Clona o conteúdo 3 VEZES. 
+    // Com o original, teremos 4 conjuntos de cards.
+    // Isso garante largura suficiente para telas 4K e para a animação de 50%.
+    for (let i = 0; i < 3; i++) {
+      originalContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        duplicatedItem.setAttribute("aria-hidden", true); // Bom para acessibilidade (leitores de tela ignoram)
+        scroller.appendChild(duplicatedItem);
+      });
+    }
+  });
+});
