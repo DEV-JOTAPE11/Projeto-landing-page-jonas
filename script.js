@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (video.paused) {
             iconPlay.style.display = 'block';
             iconPause.style.display = 'none';
-            overlay.classList.add('active'); // Mostra a tela roxa
+            overlay.classList.add('active'); 
         } else {
             iconPlay.style.display = 'none';
             iconPause.style.display = 'block';
-            overlay.classList.remove('active'); // Esconde a tela roxa
+            overlay.classList.remove('active'); 
         }
     }
 
@@ -54,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.value = percent;
         currentTimeEl.textContent = formatTime(video.currentTime);
 
-        // O TRUQUE DO ROXO: Pinta o fundo da barra usando degradê no CSS via JS
+       
         progressBar.style.background = `linear-gradient(to right, #8257e5 ${percent}%, rgba(255,255,255,0.3) ${percent}%)`;
     }
 
-    // 5. Pular Vídeo
+    
     function skip(seconds) {
         video.currentTime += seconds;
     }
@@ -80,19 +80,19 @@ document.addEventListener('DOMContentLoaded', function() {
         video.currentTime = time;
     });
 
-    // Metadados carregados (para mostrar a duração total)
+    
     video.addEventListener('loadedmetadata', function() {
         durationEl.textContent = formatTime(video.duration);
     });
 
-    // Botões de Pular
-    btnForward.addEventListener('click', () => skip(10)); // Avança 10s
-    btnRewind.addEventListener('click', () => skip(-10)); // Volta 10s
+    
+    btnForward.addEventListener('click', () => skip(10)); 
+    btnRewind.addEventListener('click', () => skip(-10)); 
 
     // Volume (Mute/Unmute)
     btnVolume.addEventListener('click', () => {
         video.muted = !video.muted;
-        // Opcional: mudar cor do ícone se estiver mudo
+        
         btnVolume.style.color = video.muted ? '#ff4757' : '#fff';
     });
 
@@ -101,13 +101,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (video.requestFullscreen) {
             video.requestFullscreen();
         } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen(); // Safari
+            video.webkitRequestFullscreen(); 
         }
     });
 
     // Botões do Overlay
     btnResumeOverlay.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita clicar no vídeo atrás
+        e.stopPropagation(); 
         video.play();
     });
     
