@@ -994,8 +994,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .bonus-card {
-  /* O GRADIENTE: Começa escuro (#121214) e clareia levemente (#1c1c21) para baixo */
-  background: linear-gradient(180deg, #121214 0%, #1a1a20 100%);
+  
+  background: linear-gradient(180deg, #0a0a1e 0%, #020511 100%);
 
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -1161,9 +1161,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Imagem do Topo do Card */
 .card-header-image img {
-  width: 100%;
+  width: 70%;
   height: auto;
   display: block;
+  margin-inline: auto;
+  margin-top: 2rem;
   /* Um leve brilho roxo na base da imagem para conectar com o card */
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
@@ -1262,7 +1264,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
   margin-inline: auto;
 }
 
-
 /* ==========================================================================
    SEÇÃO FAQ (ACORDEÃO VERTICAL)
 ========================================================================== */
@@ -1347,6 +1348,91 @@ input[type="range"]::-webkit-slider-thumb:hover {
   line-height: 1.6;
   margin: 0;
 }
+
+/* ==========================================================================
+   FOOTER (ESTILIZAÇÃO)
+========================================================================== */
+
+.site-footer {
+  /* Usa a cor secundária (um pouco mais clara que o fundo preto total) */
+  background-color: var(--bg-body);
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color); /* Linha sutil para separar */
+  margin-top: 80px; /* Espaço acima do footer */
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Permite quebrar linha no mobile */
+  gap: 24px;
+}
+
+/* --- Lado Esquerdo (Logo e Texto) --- */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer-logo svg {
+  color: var(--primary-color); /* Coroa Roxa */
+}
+
+.footer-logo:hover {
+  color: var(--primary-color);
+}
+
+.copyright {
+  color: var(--text-body);
+  font-size: 0.9rem;
+}
+
+/* --- Lado Direito (Redes Sociais) --- */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.05); /* Fundo circular sutil */
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Efeito Hover nos Ícones */
+.social-link:hover {
+  background-color: var(--primary-color); /* Fundo roxo */
+  color: #fff;
+  transform: translateY(-3px); /* Leve subida */
+  box-shadow: 0 4px 12px rgba(130, 87, 229, 0.3);
+}
+
 
 /* ==========================================================================
    RESPONSIVIDADE (MEDIA QUERIES)
@@ -1577,6 +1663,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
   #a-offer {
     margin-inline: auto;
     width: 70%;
+  }
+
+  .site-footer {
+    padding: 32px 0;
+    text-align: center; /* Centraliza tudo no mobile */
+  }
+
+  .footer-container {
+    flex-direction: column; /* Empilha os elementos */
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .footer-left {
+    align-items: center; /* Centraliza o logo e o texto */
   }
 }
 
