@@ -138,3 +138,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      const answer = item.querySelector('.faq-answer');
+
+      // 1. Alterna a classe 'active' no item clicado
+      item.classList.toggle('active');
+
+      // 2. Controla a altura para animação (Slide Down / Slide Up)
+      if (item.classList.contains('active')) {
+        answer.style.maxHeight = answer.scrollHeight + "px"; // Abre
+      } else {
+        answer.style.maxHeight = null; // Fecha
+      }
+
+      // 3. (OPCIONAL) Fecha os outros itens quando um abre (Acordeão Clássico)
+      // Se quiser que vários fiquem abertos ao mesmo tempo, apague esse bloco abaixo.
+      faqQuestions.forEach(otherQuestion => {
+        const otherItem = otherQuestion.parentElement;
+        if (otherItem !== item && otherItem.classList.contains('active')) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+      
+    });
+  });
+});
